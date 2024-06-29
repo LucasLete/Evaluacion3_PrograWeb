@@ -112,3 +112,16 @@ def productosUpdate(request):
         productos = Producto.objects.all()
         context = {'productos': productos}
         return render(request, 'productos/productos_list.html', context)
+
+
+def inicio(request):
+    return render(request, 'productos/inicio.html')
+
+def login(request):
+    return render(request, 'productos/login.html')
+
+def jardineria(request):
+    return render(request, 'productos/jardineria.html')
+
+def Registrarse(request):
+    return render(request, 'productos/Registrarse.html')

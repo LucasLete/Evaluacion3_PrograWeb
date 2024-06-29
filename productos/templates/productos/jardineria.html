@@ -1,0 +1,201 @@
+{% load static %}
+
+<!DOCTYPE html>
+<html lang="en">
+	<head>
+		<meta charset="UTF-8" />
+		<meta http-equiv="X-UA-Compatible" content="IE=edge" />
+		<meta
+			name="viewport"
+			content="width=device-width, initial-scale=1.0"
+		/>
+		<link rel="shortcut icon" href="img/logo.avif" type="image/x-icon">
+		
+		<title>PlantasChile</title>
+		<link rel="stylesheet" href="{% static 'jardineria.css' %}" />
+	</head>
+	<body>
+		
+		<header>
+			<img src="img/logo.avif" alt="logoempresa" width="100px"  >
+			<div class="navbar">
+				<div class="logo">
+				
+				<h2>Plantitas Chile🌷</h2>
+				</div>
+				<div class="search-bar">
+				  <input type="text" placeholder="Buscar...">
+				</div>
+				<div class="nav-items">
+				  <h3><a href="{% url 'inicio' %}">Inicio✨</a>
+				  <a href="{% url 'jardineria' %}">Plantas🌼</a>
+				  <a href="Contactanos.html">Contacto📝</a>
+				  <a href="{% url 'login' %}">Inicia Sesion🚪</a></h3>
+				</div>
+			  </div>
+				  
+	
+		<section class="carrusel">
+			<div class="container-icon">
+				<div class="container-cart-icon">
+					<svg
+						xmlns="http://www.w3.org/2000/svg"
+						fill="none"
+						viewBox="0 0 24 24"
+						stroke-width="1.5"
+						stroke="currentColor"
+						class="icon-cart"
+					>
+						<path
+							stroke-linecap="round"
+							stroke-linejoin="round"
+							d="M15.75 10.5V6a3.75 3.75 0 10-7.5 0v4.5m11.356-1.993l1.263 12c.07.665-.45 1.243-1.119 1.243H4.25a1.125 1.125 0 01-1.12-1.243l1.264-12A1.125 1.125 0 015.513 7.5h12.974c.576 0 1.059.435 1.119 1.007zM8.625 10.5a.375.375 0 11-.75 0 .375.375 0 01.75 0zm7.5 0a.375.375 0 11-.75 0 .375.375 0 01.75 0z"
+						/>
+					</svg>
+					<div class="count-products">
+						<span id="contador-productos">0</span>
+					</div>
+				</div>
+
+				<div class="container-cart-products hidden-cart">
+					<div class="row-product hidden">
+						<div class="cart-product">
+							<div class="info-cart-product">
+								<span class="cantidad-producto-carrito">1</span>
+								<p class="titulo-producto-carrito">Zapatos Nike</p>
+								<span class="precio-producto-carrito">$60</span>
+							</div>
+							<svg
+								xmlns="http://www.w3.org/2000/svg"
+								fill="none"
+								viewBox="0 0 24 24"
+								stroke-width="1.5"
+								stroke="currentColor"
+								class="icon-close"
+							>
+								<path
+									stroke-linecap="round"
+									stroke-linejoin="round"
+									d="M6 18L18 6M6 6l12 12"
+								/>
+							</svg>
+						</div>
+					</div>
+
+					<div class="cart-total hidden">
+						<h3>Total:</h3>
+						<span class="total-pagar">$200</span>
+					</div>
+					<p class="cart-empty">El carrito está vacío</p>
+				</div>
+			</div>
+		</header>
+		<div class="container-items">
+			<div class="item">
+				<figure>
+					<img
+						src="{% static 'img/Planta Firus.PNG' %}"
+						alt="producto"
+					/>
+				</figure>
+				<div class="info-product">
+					<h2>Fidel (Ficus Lyrata)</h2>
+					<h4><ul>
+						<li>Ficus Lyrata mide 80cm a 1,00 metro en el macetero de plástico desde el suelo aproximadamente. La altura total surgió del macetero que se escojas.</li>
+						<li>Foto referencial, las plantas varían en tamaño y cantidad de hojas.</li></ul></h4>
+					<p class="price">$74.990</p>
+					<button class="btn-add-cart">Añadir al carrito</button>
+				</div>
+			</div>
+			<div class="item">
+				<figure>
+					<img
+						src="{% static 'img/Baby susan.PNG' %}"
+						alt="producto"
+					/>
+				</figure>
+				<div class="info-product">
+					<h2>Baby Susan (Sansevieria)</h2>
+					<h4><ul><li>Baby Susan, la planta, mide 20 centímetros de alto aproximadamente, la altura final llegó al macetero.</li>
+						<li>Foto referencial, las plantas varían en tamaño y cantidad de hojas.</li></ul></h4>
+					<p class="price">Antes: $80.990</p><span> Ahora: $75.990</span></p>
+					<button class="btn-add-cart">Añadir al carrito</button>
+				</div>
+			</div>
+			<div class="item">
+				<figure>
+					<img
+						src="{% static 'img/spike.PNG' %}"
+						alt="producto"
+					/>
+				</figure>
+				<div class="info-product">
+					<h2>Spike L (Spathyphillum)</h2>
+					<h4><ul><li>Spike, la planta, mide entre 20 a 35 centímetros de alto aproximadamente, la altura final del macetero.</li>
+						<li>Foto referencial, las plantas varían en tamaño y cantidad de hojas.</li></ul></h4>
+					<p class="price">$35.990</p>
+					<button class="btn-add-cart">Añadir al carrito</button>
+				</div>
+			</div>
+			<div class="item">
+				<figure>
+					<img
+						src="{% static 'img/bela.PNG' %}"
+						alt="producto"
+					/>
+				</figure>
+				<div class="info-product">
+					<h2>Bela (Neanthe Bella)</h2>
+					<h4><ul><li>Bela, la planta, mide 30 centímetros de alto aproximadamente, la altura final del macetero.</li>
+						<li>Foto referencial, las plantas varían en tamaño y cantidad de hojas.</li></ul></h4>
+						<p class="price">$20.990</p><span> Ahora: $17.990</span></p>
+					<button class="btn-add-cart">Añadir al carrito</button>
+				</div>
+			</div>
+			<div class="item">
+				<figure>
+					<img
+						src="{% static 'img/celia.PNG' %}"
+						alt="producto"
+					/>
+				</figure>
+				<div class="info-product">
+					<h2>Celia (Camelia)</h2>
+					<h4><ul>
+						<li>Celia, la planta, mide entre 1,70  centímetros de alto aproximadamente, la altura final surgió del macetero.</li>
+						<li>Foto referencial, las plantas varían en tamaño y cantidad de hojas.</li></ul></h4>
+					<p class="price">$63.990</p> 
+					<button class="btn-add-cart">Añadir al carrito</button>
+				</div>
+			</div>
+            <div class="item">
+				<figure>
+					<img
+						src="{% static 'img/peter.PNG' %}"
+						alt="producto"
+					/>
+				</figure>
+				<div class="info-product">
+					<h2>Peter (Philodendro)</h2>
+					<h4><ul><li>Peter, la planta, mide entre 45 y 60 centímetros de alto aproximadamente. La altura total surgió del macetero.</li>
+						<li>Foto referencial, las plantas varían en tamaño y cantidad de hojas.</li></ul></h4>
+					<p class="price">$21.990</p> 
+					<button class="btn-add-cart">Añadir al carrito</button>
+				</div>
+			</div>
+		</div> 
+		</div> 
+        </section>
+		<script src="index.js"></script>
+	</body>
+	<footer>
+		Dirección: 123 Calle Principal, Ciudad, País |
+		Teléfono: +1234567890 |
+		Redes Sociales:
+		<a href="https://www.facebook.com">Facebook</a>
+		<a href="https://www.twitter.com">Twitter</a>
+		<a href="https://www.instagram.com">Instagram</a>
+		<br><br>
+		© 2024 Derechos Reservados De Plantas Chile🌷
+	</footer>
+</html>
