@@ -1,4 +1,4 @@
-from django.shortcuts import render
+from django.shortcuts import render, get_object_or_404
 
 from .models import Producto, Categoria
 
@@ -16,36 +16,34 @@ def crud(request):
     context = {'productos': productos}
     return render(request, 'productos/productos_list.html', context)
 
+from django.shortcuts import render
+from .models import Producto, Categoria
+
 def productosAdd(request):
-    if request.method is not "POST":
-        categorias= Categoria.objects.all()
-        context={'categorias': categorias}
+    if request.method != "POST":
+        categorias = Categoria.objects.all()
+        context = {'categorias': categorias}
         return render(request, 'productos/productos_add.html', context)
-    
-
     else:
+        id_producto = request.POST["ID_Producto"]
+        nombre_producto = request.POST["Nombre_Producto"]
+        precio = request.POST["Precio"]
+        descripcion = request.POST["Descripcion"]
+        categoria = request.POST["Categoria"]
+        foto = request.FILES["Foto"]
 
-
-
-        id_producto=request.POST["id_producto"]
-        nombre_producto=request.POST["nombre_producto"]
-        precio=request.POST["precio"]
-        descripcion=request.POST["descripcion"]
-        categoria=request.POST["categoria"]
-        foto=request.POST["foto"]
-
-        objCategoria=Categoria.objects.get(id_categoria = categoria)
-        obj=Producto.objects.create(id_producto=id_producto,
-                                    nombre_producto=nombre_producto,
-                                    precio=precio,
-                                    descripcion=descripcion,
-                                    categoria=objCategoria,
-                                    foto=foto )
-        
-
+        objCategoria = Categoria.objects.get(id_categoria=categoria)
+        obj = Producto.objects.create(
+            id_producto=id_producto,
+            nombre_producto=nombre_producto,
+            precio=precio,
+            descripcion=descripcion,
+            id_categoria=objCategoria,
+            foto=foto
+        )
 
         obj.save()
-        context={'mensaje':"Ok, datos grabados..."}
+        context = {'mensaje': "Ok, datos grabados..."}
         return render(request, 'productos/productos_add.html', context)
     
 
@@ -80,33 +78,37 @@ def productos_findEdit(request,pk):
             context={'mensaje':"Error, id no existe..."}
             return render(request, 'productos/productos_list.html', context)
 
-
-
 def productosUpdate(request):
     if request.method == "POST":
 
-        id_producto=request.POST["id_producto"]
-        nombre_producto=request.POST["nombre_producto"]
-        precio=request.POST["precio"]
-        descripcion=request.POST["descripcion"]
-        categoria=request.POST["categoria"]
-        foto=request.POST["foto"]
+        id_producto = request.POST["id_producto"]
+        nombre_producto = request.POST["nombre_producto"]
+        precio = request.POST["precio"]
+        descripcion = request.POST["descripcion"]
+        categoria_id = request.POST["categoria"]
+        foto = request.POST["foto"]
 
-        objCategoria=Producto.objects.get(id_categoria = categoria)
+        # Obtener la instancia de Producto que deseas actualizar
+        producto = get_object_or_404(Producto, id_producto=id_producto)
 
-        producto = Producto()
-        producto.id_producto=id_producto
-        producto.nombre_producto=nombre_producto
-        producto.precio=precio
-        producto.descripcion=descripcion
-        producto.id_categoria=objCategoria
-        producto.foto=foto
+        # Obtener la instancia de Categoria correcta
+        objCategoria = get_object_or_404(Categoria, id_categoria=categoria_id)
+
+        # Actualizar los campos del producto
+        producto.nombre_producto = nombre_producto
+        producto.precio = precio
+        producto.descripcion = descripcion
+        producto.id_categoria = objCategoria  # Asegúrate de asignar la instancia de Categoria
+        producto.foto = foto
+
         producto.save()
 
-        categorias=Categoria.objects.all()
-        context={'mensaje':"Ok, datos actualizados...",'categorias':categorias,'producto':producto}
+        # Obtener todas las categorías para el contexto
+        categorias = Categoria.objects.all()
+        context = {'mensaje': "Ok, datos actualizados...", 'categorias': categorias, 'producto': producto}
         return render(request, 'productos/productos_edit.html', context)
     else:
+        # Si no es una solicitud POST, simplemente mostrar la lista de productos
         productos = Producto.objects.all()
-        context={'productos':productos}
+        context = {'productos': productos}
         return render(request, 'productos/productos_list.html', context)

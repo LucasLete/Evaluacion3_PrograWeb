@@ -7,29 +7,34 @@
 </head>
 <body>
     
-        <div style=" text-align: center;">
-            <h2>Formulario CRUD para Productos</h2><br>
-            <form action="productosAdd" method="POST">
-                {% csrf_token %}
+    <div style="text-align: center;">
+        <h2>Formulario CRUD para Productos</h2><br>
+        <form action="productosAdd" method="POST" enctype="multipart/form-data">
+            {% csrf_token %}
 
-                <pre>ID_Producto:           <input type="text" name="ID_Producto">    </pre>
-                <pre>Nombre_Producto:       <input type="text" name="Nombre_Producto"></pre>
-                <pre>Precio:                <input type="text" name="Precio">         </pre>
-                <pre>Descripcion:           <input type="text" name="Descripcion">    </pre>
-                <pre>Categoria:             <input type="text" name="Categoria">      </pre>
-                <pre>Foto:                  <input type="file" name="Foto">           </pre>
+            <pre>ID_Producto:           <input type="text" name="ID_Producto">    </pre>
+            <pre>Nombre_Producto:       <input type="text" name="Nombre_Producto"></pre>
+            <pre>Precio:                <input type="text" name="Precio">         </pre>
+            <pre>Descripcion:           <input type="text" name="Descripcion">    </pre>
+            <pre>Categoria:             <select name="Categoria">
+                                          {% for categoria in categorias %}
+                                            <option value="{{ categoria.id_categoria }}">{{ categoria.categoria }}</option>
+                                          {% endfor %}
+                                        </select>
+            </pre>
+            <pre>Foto:                  <input type="file" name="Foto">           </pre>
 
-                <input type="submit" name="opcion" value="Agregar">
+            <input type="submit" name="opcion" value="Agregar">
 
-            </form> <br><br>
-            <a href="{% url 'crud' %}">Volver</a>
-            <br>
-            <div id="idMensajes">
-                {% if mensaje %}
-                {{mensaje}}
-                {% endif %}
-            </div>
+        </form> <br><br>
+        <a href="{% url 'crud' %}">Volver</a>
+        <br>
+        <div id="idMensajes">
+            {% if mensaje %}
+            {{ mensaje }}
+            {% endif %}
         </div>
+    </div>
 
 </body>
 </html>
