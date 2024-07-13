@@ -16,25 +16,26 @@
     <div class="formulario" id="container">
         <h1>Registrarse</h1>
         <form id="miFormulario" action="{% url 'login' %}" method="POST">
+            {% csrf_token %}
             <div class="username">
-                <input type="text" id="itNombre" class="campo">
+                <input type="text" id="itNombre" class="campo" name="username">
                 <label>Nombre de Usuario</label>
                 <div id="mensaje1" class="errores">Ingrese su nombre</div>
             </div>
             <div class="username">
-                <input type="text" id="itMail" class="campo">
+                <input type="text" id="itMail" class="campo" name="email">
                 <label>Email</label>
                 <div id="mensaje2" class="errores">Ingrese su Email</div>
             </div>
             <div class="username">
-                <input type="password" id="itPassword" class="campo">
+                <input type="password" id="itPassword" class="campo" name="password">
                 <label>Contraseña</label>
                 <div id="mensaje3" class="errores">Ingrese Contraseña</div>
             </div>
             <div class="recordar">¿Olvidó su contraseña?</div>
             <input type="submit" value="Iniciar" id="bEnviar" class="boton">
             <div class="registrarse">
-                <a href="{% url 'login' %}">Inicar Sesion</a>
+                <a href="{% url 'login' %}">Iniciar Sesión</a>
             </div>
         </form>
     </div>

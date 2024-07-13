@@ -7,19 +7,17 @@
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Login</title>
     <link rel="stylesheet" href="{% static 'StylesInicioSesion.css' %}">
-    <link rel="stylesheet" href="Registrarse.html">
     <script type="text/javascript" src="https://ajax.googleapis.com/ajax/libs/jquery/3.7.1/jquery.min.js"></script>
 </head>
-<div class="logoempresa">
-    <img src="img/logo.avif" alt="logoempresa" width="105px" >
-   </div>
-  
-
-  
 <body>
+    <div class="logoempresa">
+        <img src="{% static 'img/logo.avif' %}" alt="logoempresa" width="105px">
+    </div>
+  
     <div class="formulario" id="container">
         <h1>Inicio Sesion</h1>
         <form id="miFormulario" action="{% url 'inicio' %}" method="POST">
+            {% csrf_token %}
             <div class="username">
                 <input type="text" id="itNombre" class="campo" name="username" required>
                 <label>Nombre de Usuario</label>

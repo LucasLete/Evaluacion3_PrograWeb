@@ -5,13 +5,15 @@ $(document).ready(function() {
 
         if (nombre == "") {
             $("#mensaje1").fadeIn();
-            return false;
-        }else{
+            return false;  // Evita que se envíe el formulario si el nombre está vacío
+        } else {
             $("#mensaje1").fadeOut();
-            if(password == "") {
+            if (password == "") {
                 $("#mensaje2").fadeIn();
-                return false;
-
+                return false;  // Evita que se envíe el formulario si la contraseña está vacía
+            } else {
+                $("#mensaje2").fadeOut();
+                // Aquí podrías agregar más validaciones si fuera necesario
             }
         }
     });
