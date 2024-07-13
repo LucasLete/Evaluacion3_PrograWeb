@@ -4,15 +4,29 @@
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Jardineria</title>
+    {% load static %}
+    <link rel="stylesheet" href="{% static 'index.css' %}">
 </head>
 <body>
-    <h1>Jardineria</h1>
-    <br>
-    {% for producto in productos %}
-
-    {{producto.id_producto}}, {{producto.nombre_producto}},  {{producto.precio}},
-    {{producto.descripcion}}, <img src="{{producto.foto.url}}" alt="imagen de {{producto.nombre_producto}}" width="100">, {{producto.id_categoria.categoria}}<br>
-
-    {% endfor%}
+    <div class="container">
+        <h1>Jardineria</h1>
+        <br>
+        {% for producto in productos %}
+            <div class="product">
+                <div class="product-info">
+                    <p>ID Producto: {{ producto.id_producto }}</p>
+                    <p>Nombre: {{ producto.nombre_producto }}</p>
+                    <p class="price">Precio: {{ producto.precio }}</p>
+                    <p>Descripción: {{ producto.descripcion }}</p>
+                    {% if producto.foto %}
+                        <img src="{{ producto.foto.url }}" alt="imagen de {{ producto.nombre_producto }}" width="100">
+                    {% else %}
+                        <img src="{% static 'ruta/a/imagen/por/defecto.jpg' %}" alt="imagen por defecto" width="100">
+                    {% endif %}
+                    <p>Categoría: {{ producto.id_categoria.categoria }}</p>
+                </div>
+            </div>
+        {% endfor %}
+    </div>
 </body>
 </html>
